@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 10f;
     public GameObject MoveHereIcon;
     public GameObject Player;
+    public GameObject ScriptBox;
     Vector2 lastClickedPoint;
     bool moving = false;
     Vector3 OldPos;
@@ -83,7 +84,8 @@ public class PlayerMovement : MonoBehaviour
                 
                 }
 
-
+                // Player MOVED!
+                ScriptBox.GetComponent<AIControler>().MoveAI();
             }
         }
     }
