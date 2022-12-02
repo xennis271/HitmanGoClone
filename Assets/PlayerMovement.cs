@@ -94,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
         // WE HIT SOMETHING!
         Debug.Log("Hit! :" + collision.gameObject.name.ToString());
 
-        if(collision.gameObject.name == "NoNoZone" || collision.gameObject.name == "Tilemap")
+        if(collision.gameObject.name == "NoNoZone" || collision.gameObject.name == "Tilemap" || collision.gameObject.name == "B1")
         {
             // uh oh that's a no no zone
             Player.GetComponent<Rigidbody2D>().MovePosition(OldPos);
