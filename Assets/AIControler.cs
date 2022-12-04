@@ -120,7 +120,9 @@ public class AIControler : MonoBehaviour
                     {
                         Debug.DrawRay(DebugRay2, DebugRay, Color.green, 3.0f);
                         //Debug.Log(AI.transform.gameObject.name.ToString() + " Hit legaly:" + hit.collider.gameObject.name.ToString());
-                        Debug.Log("Player was caught");
+                        Debug.Log("Player was caught GAME OVER");
+                        Player.transform.DetachChildren();
+                        Destroy(Player);
                     }
                     else
                     {

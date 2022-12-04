@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject ScriptBox;
     Vector2 lastClickedPoint;
     bool moving = false;
+    public int PlayerScore = 0;
     Vector3 OldPos;
 
     // Update is called once per frame
@@ -99,6 +100,20 @@ public class PlayerMovement : MonoBehaviour
             // uh oh that's a no no zone
             Player.GetComponent<Rigidbody2D>().MovePosition(OldPos);
             Player.GetComponent<Rigidbody2D>().rotation = 0f;
+        }
+        if (collision.gameObject.name.ToString().Equals("Coin"))
+        {
+            PlayerScore += 10; // for a coin
+            Debug.Log("Score+:" + PlayerScore);
+            Destroy(collision.gameObject);
+            Player.transform.position = OldPos;
+        }
+        if (collision.gameObject.name.ToString().Equals("Treasure"))
+        {
+            PlayerScore += 100; // for a end
+            Debug.Log("Score+:" + PlayerScore);
+            Destroy(collision.gameObject);
+            Player.transform.position = OldPos;
         }
     }
 }
