@@ -5,11 +5,17 @@ using UnityEngine;
 public class AIControler : MonoBehaviour
 {
     public GameObject[] BasicAI;
+    public GameObject[] FireAI;
+    public static int MAXPROJECTILES = 10;
+    public GameObject[] Projectiles;
     public Dictionary<GameObject, List<Vector3>> BasicAIMoves = new Dictionary<GameObject, List<Vector3>>();
     public GameObject Player;
     public Vector3 DebugRay = new Vector3(0, 0, 0);
     public Vector3 DebugRay2 = new Vector3(0, 0, 0);
+    public GameObject Fire;
     public int BadguyViewDist = 1;
+    public int FireAIchance = 25;
+    public int FireAIDelay = 5;
     public void Start()
     {
         foreach (GameObject AI in BasicAI)
@@ -46,6 +52,17 @@ public class AIControler : MonoBehaviour
             BasicAIMoves.Add(AI, MovePoints);
             //MovePoints.Clear();
             //AllChildren.Clear();
+        }
+        // FireAI
+        Projectiles = new GameObject[MAXPROJECTILES];
+        //Debug.Log(Projectiles.Length);
+        for (int i = 0; i < MAXPROJECTILES; i++)
+        {
+            //Debug.Log(i);
+            GameObject Fireball = GameObject.Instantiate(Fire);
+            Projectiles[i] = Fireball;
+            Projectiles[i].transform.position = new Vector3(-999, -999, 999);
+            Projectiles[i].name = (FireAIDelay+1).ToString();
         }
     }
 
@@ -154,6 +171,79 @@ public class AIControler : MonoBehaviour
            // Debug.Log("Pointing at player");
             
         }
+
+
+
+        // Fireball AI
+
+
+        // Create Fireball
+        foreach (GameObject AI in FireAI)
+        {
+            // we fire on a % chance
+            int outcome = Random.Range(1, 100);
+            if(outcome <= FireAIchance)
+            {
+                // spawn fire on player
+                //Debug.Log("AI fired");
+                GameObject Fireball = GameObject.Instantiate(Fire);
+                Fireball.name = FireAIDelay.ToString();
+                bool SpawnedFire = false;
+                for (int i = 0; i < Projectiles.Length; i++)
+                {
+                    if(Projectiles[i].transform.position.Equals(new Vector3(-999, -999, 999)) && !SpawnedFire)
+                    {
+                        //Projectiles[i] = GameObject.Instantiate(Fire);
+                        Projectiles[i].transform.position = Player.transform.position;
+                        Projectiles[i].name = FireAIDelay.ToString();
+                        Debug.Log("Spawned fire");
+                        SpawnedFire = true;
+                    }
+                }
+                if (!SpawnedFire)
+                    Debug.Log("Could not spawn fire due to max projectiles");
+
+
+            }
+            else
+            {
+                Debug.Log("Fireball did not spawn ["+ outcome+ "<=" + FireAIchance + "]");
+            }
+        }
+
+        // Activate fireballs if ready
+
+        for (int i = 0; i < Projectiles.Length; i++)
+        {
+            if (Projectiles[i].name.Equals("0"))
+            {
+                // check if the player is in zone
+                if(Player.transform.position.x.Equals(Projectiles[i].transform.position.x) && Player.transform.position.y.Equals(Projectiles[i].transform.position.y))
+                {
+                    Debug.Log("Hit player with fireball");
+                    Destroy(Player);
+                }
+                else
+                {
+                    Debug.Log("Missed player with fireball");
+                    //Destroy(Projectiles[i]);
+                    Projectiles[i].transform.position = new Vector3(-999, -999, 999);
+                    Projectiles[i].name = FireAIDelay.ToString();
+                }
+            }
+            else
+            {
+                if (!Projectiles[i].name.Equals((FireAIDelay + 1).ToString()))
+                {
+                    int name = int.Parse(Projectiles[i].name);
+                    name -= 1;
+                    Projectiles[i].name = name.ToString();
+                }
+                
+            }
+        }
+
+
         Step++;
         
     }
