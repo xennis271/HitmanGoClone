@@ -64,6 +64,10 @@ public class AIControler : MonoBehaviour
             Projectiles[i].transform.position = new Vector3(-999, -999, 999);
             Projectiles[i].name = (FireAIDelay+1).ToString();
         }
+        foreach (GameObject AI in BasicAI)
+        {
+            //AI.transform.localScale = new Vector3(2, 2, 1);
+        }
     }
 
 
@@ -196,18 +200,18 @@ public class AIControler : MonoBehaviour
                         //Projectiles[i] = GameObject.Instantiate(Fire);
                         Projectiles[i].transform.position = Player.transform.position;
                         Projectiles[i].name = FireAIDelay.ToString();
-                        Debug.Log("Spawned fire");
+                        //Debug.Log("Spawned fire");
                         SpawnedFire = true;
                     }
                 }
-                if (!SpawnedFire)
-                    Debug.Log("Could not spawn fire due to max projectiles");
+                //if (!SpawnedFire)
+                    //Debug.Log("Could not spawn fire due to max projectiles");
 
 
             }
             else
             {
-                Debug.Log("Fireball did not spawn ["+ outcome+ "<=" + FireAIchance + "]");
+                //Debug.Log("Fireball did not spawn ["+ outcome+ "<=" + FireAIchance + "]");
             }
         }
 
