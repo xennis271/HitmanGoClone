@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+//using UnityEditor.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     
     public bool OldMovement = false;
     public float speed = 10f;
+    public GameObject ScoreGo;
     public GameObject MoveHereIcon;
     public GameObject Player;
     public GameObject ScriptBox;
@@ -110,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
         {
             PlayerScore += 10; // for a coin
             Debug.Log("Score+:" + PlayerScore);
+            ScoreGo.GetComponent<UnityEngine.UI.Text>().text = PlayerScore.ToString();
             Destroy(collision.gameObject);
             Player.transform.position = OldPos;
         }
@@ -117,10 +120,21 @@ public class PlayerMovement : MonoBehaviour
         {
             PlayerScore += 100; // for a end
             Debug.Log("Score+:" + PlayerScore);
+
             Destroy(collision.gameObject);
             Player.transform.position = OldPos;
             //Moving to the next level
             SceneManager.LoadScene("Level 2");
+        }
+        if (collision.gameObject.name.ToString().Equals("Treasure2"))
+        {
+            PlayerScore += 100; // for a end
+            Debug.Log("Score+:" + PlayerScore);
+
+            Destroy(collision.gameObject);
+            Player.transform.position = OldPos;
+            //Moving to the next level
+            SceneManager.LoadScene("Credits");
         }
     }
 }
