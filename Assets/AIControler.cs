@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AIControler : MonoBehaviour
 {
     public GameObject[] BasicAI;
     public GameObject[] FireAI;
+    public GameObject DeathScreen;
+    public GameObject NormalScreen;
     public static int MAXPROJECTILES = 10;
     public GameObject[] Projectiles;
     public Dictionary<GameObject, List<Vector3>> BasicAIMoves = new Dictionary<GameObject, List<Vector3>>();
@@ -16,6 +19,7 @@ public class AIControler : MonoBehaviour
     public int BadguyViewDist = 1;
     public int FireAIchance = 25;
     public int FireAIDelay = 5;
+   
     public void Start()
     {
         foreach (GameObject AI in BasicAI)
@@ -142,8 +146,10 @@ public class AIControler : MonoBehaviour
                         Debug.DrawRay(DebugRay2, DebugRay, Color.green, 3.0f);
                         //Debug.Log(AI.transform.gameObject.name.ToString() + " Hit legaly:" + hit.collider.gameObject.name.ToString());
                         Debug.Log("Player was caught GAME OVER");
-                        Player.transform.DetachChildren();
-                        Destroy(Player);
+                        DeathScreen.SetActive(true);
+                        NormalScreen.SetActive(false);
+                        //Player.transform.DetachChildren();
+                        //Destroy(Player);
                     }
                     else
                     {
@@ -225,7 +231,10 @@ public class AIControler : MonoBehaviour
                 if(Player.transform.position.x.Equals(Projectiles[i].transform.position.x) && Player.transform.position.y.Equals(Projectiles[i].transform.position.y))
                 {
                     Debug.Log("Hit player with fireball");
-                    Destroy(Player);
+                    Debug.Log("Player was caught GAME OVER");
+                    DeathScreen.SetActive(true);
+                    NormalScreen.SetActive(false);
+                    //Destroy(Player);
                 }
                 else
                 {
@@ -256,5 +265,14 @@ public class AIControler : MonoBehaviour
     {
         //Debug.Log("Drawing line");
         //Debug
+    }
+
+    public void LoadLevelOne()
+    {
+        SceneManager.LoadScene("Level 1");
+    }
+    public void LoadLevelTwo()
+    {
+        SceneManager.LoadScene("Level 2");
     }
 }
