@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
             // NEW MOVEMENT
             if (Input.GetMouseButtonDown(0))
             {
+                Debug.Log("Mouse clicked");
                 OldPos = Player.GetComponent<Rigidbody2D>().position;
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
@@ -53,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
                 RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
                 if (hit)
                 {
+                    Debug.Log("Clicked:" + hit.collider.gameObject.name);
                     if (hit.collider.name == "Left" ||
                     hit.collider.name == "Right" ||
                     hit.collider.name == "Up" ||
@@ -75,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
                             case "Up":
                                 NewPos = new Vector3(transform.position.x + 0.5f, transform.position.y + 0.25f);
                                 Player.GetComponent<Rigidbody2D>().MovePosition(NewPos);
+                                Debug.Log("Moved Player up?");
                                 break;
                             case "Down":
                                 NewPos = new Vector3(transform.position.x - 0.5f, transform.position.y - 0.25f);
@@ -114,6 +118,8 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Score+:" + PlayerScore);
             Destroy(collision.gameObject);
             Player.transform.position = OldPos;
+            //Moving to the next level
+            SceneManager.LoadScene("Level 2");
         }
     }
 }
