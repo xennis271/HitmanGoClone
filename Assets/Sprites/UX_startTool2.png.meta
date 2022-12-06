@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: 2608511325347031250
     second: UX_startTool2_2
+  - first:
+      213: 8393810736657521351
+    second: UX_startTool2_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -156,6 +159,27 @@ TextureImporter:
       bones: []
       spriteID: 2d8a4ebda3b433420800000000000000
       internalID: 2608511325347031250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UX_startTool2_3
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 100
+        width: 295
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cad456846ecc7470800000000000000
+      internalID: 8393810736657521351
       vertices: []
       indices: 
       edges: []
