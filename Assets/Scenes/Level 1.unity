@@ -8281,6 +8281,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2656938852087043017, guid: ffe04e539f67d984f95f939c268ab3fe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 2656938852087043017, guid: ffe04e539f67d984f95f939c268ab3fe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.58
+      objectReference: {fileID: 0}
     - target: {fileID: 2656938852178015828, guid: ffe04e539f67d984f95f939c268ab3fe, type: 3}
       propertyPath: m_Name
       value: Player
@@ -8340,6 +8348,30 @@ PrefabInstance:
     - target: {fileID: 2656938852178015833, guid: ffe04e539f67d984f95f939c268ab3fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2656938852914955658, guid: ffe04e539f67d984f95f939c268ab3fe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 2656938852914955658, guid: ffe04e539f67d984f95f939c268ab3fe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2656938853053770430, guid: ffe04e539f67d984f95f939c268ab3fe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 2656938853053770430, guid: ffe04e539f67d984f95f939c268ab3fe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 2656938853588601863, guid: ffe04e539f67d984f95f939c268ab3fe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 2656938853588601863, guid: ffe04e539f67d984f95f939c268ab3fe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.54
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffe04e539f67d984f95f939c268ab3fe, type: 3}
@@ -9633,7 +9665,7 @@ MonoBehaviour:
   DebugRay: {x: 0, y: 0, z: 0}
   DebugRay2: {x: 0, y: 0, z: 0}
   Fire: {fileID: 821620255}
-  BadguyViewDist: 10
+  BadguyViewDist: 1
   FireAIchance: 25
   FireAIDelay: 5
   Step: 1

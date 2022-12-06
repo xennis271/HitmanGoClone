@@ -141,9 +141,9 @@ public class AIControler : MonoBehaviour
                     //Debug.Log("DebugRay:(" + DebugRay.x + "," + DebugRay.y + "," + DebugRay.z + ")");
                     //Debug.Log(((AI.transform.rotation.eulerAngles.x * AI.transform.rotation.x)/2)*-1 + ">" + " 30");
                     //Debug.Log("Dist:" + hit.distance);
-                    if(hit.distance < 1.35f)
+                    if(hit.distance < .5f)
                     {
-                        Debug.DrawRay(DebugRay2, DebugRay, Color.green, 3.0f);
+                        Debug.DrawRay(DebugRay2, DebugRay, Color.green, .5f);
                         //Debug.Log(AI.transform.gameObject.name.ToString() + " Hit legaly:" + hit.collider.gameObject.name.ToString());
                         Debug.Log("Player was caught GAME OVER");
                         DeathScreen.SetActive(true);
